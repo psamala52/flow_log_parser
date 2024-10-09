@@ -18,8 +18,8 @@ This Python program parses flow logs and maps each row to a tag based on a looku
 ## Directory Structure
 ```plaintext
 .
-├── input/flow_logs.txt                 # Example flow log file
-├── input/lookup_table.csv              # Example lookup table file
+├── inputs/flow_logs.txt                 # Example flow log file
+├── inputs/lookup_table.csv              # Example lookup table file
 ├── output/port_protocol_counts.csv     # Output port protocol count file
 ├── output/tag_counts.csv
 ├── parser.py                           # For process example data using Python script
