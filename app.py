@@ -6,8 +6,8 @@ import parser as run
 def main():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     
-    flow_log_file = os.path.join(current_dir, 'input', 'flow_logs.txt')
-    lookup_file = os.path.join(current_dir, 'input', 'lookup_table.csv')
+    flow_log_file = os.path.join(current_dir, 'inputs', 'flow_logs.txt')
+    lookup_file = os.path.join(current_dir, 'inputs', 'lookup_table.csv')
     tag_counts_output_file = os.path.join(current_dir, 'output', 'tag_counts.csv')
     port_protocol_counts_output_file = os.path.join(current_dir, 'output', 'port_protocol_counts.csv')
 
