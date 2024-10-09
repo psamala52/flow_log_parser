@@ -4,17 +4,6 @@ from collections import defaultdict
 
 # Function to read the lookup table file and create a mapping
 def read_lookup_table(lookup_file):
-    """
-    The function `read_lookup_table` reads a lookup table from a CSV file and stores the data in a
-    dictionary.
-    
-    :param lookup_file: The `lookup_file` parameter is a file containing data that will be used to
-    create a lookup table. The function `read_lookup_table` reads this file, extracts relevant
-    information (such as `dstport`, `protocol`, and `tag`) from each row, and stores it in a dictionary
-    where
-    :return: The function `read_lookup_table` reads a lookup table from a CSV file and returns a
-    dictionary where the keys are tuples of `(dstport, protocol)` and the values are corresponding tags.
-    """
     lookup = {}
     with open(lookup_file, 'r') as file:
         reader = csv.DictReader(file)
@@ -31,24 +20,6 @@ def read_lookup_table(lookup_file):
 
 # Function to process flow log file and generate counts
 def process_flow_logs(flow_log_file, lookup):
-    """
-    The function `process_flow_logs` reads a flow log file, maps protocol numbers to protocol names,
-    looks up tags based on destination port and protocol, and counts tag occurrences and port/protocol
-    combinations.
-    
-    :param flow_log_file: The `flow_log_file` parameter is the file path to a log file containing
-    network flow data. This function `process_flow_logs` reads the flow log file, extracts information
-    such as destination port and protocol, looks up a tag based on this information using a provided
-    lookup dictionary, and then counts the
-    :param lookup: The `lookup` parameter in the `process_flow_logs` function is a dictionary that maps
-    a tuple of `(dstport, protocol)` to a tag. The function uses this lookup dictionary to assign a tag
-    based on the destination port and protocol extracted from the flow log file. If the tuple is found
-    :return: The function `process_flow_logs` returns three values: `tag_counts`,
-    `port_protocol_counts`, and `untagged_count`. `tag_counts` is a dictionary containing the count of
-    each tag based on the lookup, `port_protocol_counts` is a dictionary containing the count of each
-    port/protocol combination, and `untagged_count` is an integer representing the count of entries that
-    were untag
-    """
     tag_counts = defaultdict(int)
     port_protocol_counts = defaultdict(int)
     untagged_count = 0
@@ -138,17 +109,6 @@ def process_flow_logs(flow_log_file, lookup):
 
 # Function to write tag counts to a CSV file
 def write_tag_counts(tag_counts, output_file):
-    """
-    The function `write_tag_counts` writes tag counts to a CSV file with columns for tags and their
-    corresponding counts.
-    
-    :param tag_counts: A dictionary where the keys are tags and the values are the corresponding counts
-    of those tags
-    :param output_file: The `output_file` parameter is a string that represents the file path where the
-    tag counts will be written to. This file will be created or overwritten if it already exists. Make
-    sure to provide the full path along with the file name and extension where you want to save the tag
-    counts data
-    """
     with open(output_file, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Tag', 'Count'])
@@ -157,16 +117,6 @@ def write_tag_counts(tag_counts, output_file):
 
 # Function to write port/protocol counts to a CSV file
 def write_port_protocol_counts(port_protocol_counts, output_file):
-    """
-    The function writes port, protocol, and count data to a CSV file.
-    
-    :param port_protocol_counts: The `port_protocol_counts` parameter is a dictionary that contains the
-    counts of protocols for each port. The keys of the dictionary are tuples of `(port, protocol)` and
-    the values are the corresponding counts
-    :param output_file: The `output_file` parameter is a string that represents the file path where the
-    output will be written. This function opens the specified file in write mode ('w') and writes the
-    port, protocol, and count data to it in CSV format
-    """
     with open(output_file, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Port', 'Protocol', 'Count'])
